@@ -8,6 +8,11 @@ import java.util.List;
 public interface HibernateService {
     List<Person> getByCity(String city);
 
+    List<Person> getByAge(String age);
+
+    List<Person> getByNameSurname(String name, String surname);
+
+
     void addPerson(PersonalData personalData, String phoneNumber, String city);
 
 }
