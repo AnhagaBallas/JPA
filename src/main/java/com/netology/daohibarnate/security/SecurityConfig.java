@@ -1,18 +1,20 @@
 package com.netology.daohibarnate.security;
 
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-@Configuration
+
+@EnableMethodSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("Ivan").password("{noop}password").authorities("/persons/by-city")
+                .withUser("Ivan").password("{noop}password").authorities("/persons/by-city").roles("READ", "WRITE")
                 .and()
-                .withUser("Petr").password("{noop}password").authorities("persons/by-age");
+                .withUser("Petr").password("{noop}password").authorities("persons/by-age").roles("DELETE");
     }
 
     @Override

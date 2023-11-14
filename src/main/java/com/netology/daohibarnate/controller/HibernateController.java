@@ -28,8 +28,9 @@ public class HibernateController {
         );
         return hibernateService.getByCity(city);
     }
+
     @GetMapping("persons/by-age")
-    public List<Person> getByAge(@RequestParam String age){
+    public List<Person> getByAge(@RequestParam String age) {
         hibernateService.addPerson(PersonalData.builder()
                 .age("22")
                 .name("Ivan")
@@ -40,7 +41,7 @@ public class HibernateController {
     }
 
     @GetMapping("persons/by-name")
-    public List<Person> getByNameAndSurname(@RequestParam String name,@RequestParam String surname){
+    public List<Person> getByNameAndSurname(@RequestParam String name, @RequestParam String surname) {
         hibernateService.addPerson(PersonalData.builder()
                 .age("22")
                 .name("Ivan")
